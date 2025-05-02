@@ -1,9 +1,11 @@
 
+import BookingForm from '@/components/BookingForm';
 import Heading from '@/components/Heading';
 import rooms from '@/data/rooms.json'
 import Image from 'next/image';
 import Link from 'next/link'
-import {FaChevronLeft} from 'react-icons/fa'
+import { FaChevronLeft } from 'react-icons/fa'
+
 const RoomPage = ({ params }) => {
 
     const { id } = params;
@@ -18,7 +20,7 @@ const RoomPage = ({ params }) => {
             <Heading title={room.name} />
             <div className="bg-white shadow rounded-lg p-6">
         <Link
-          href="/rooms"
+          href="/"
           className="flex items-center text-gray-600 hover:text-gray-800 mb-4"
         >
           <FaChevronLeft className="fa fa-chevron-left"/>
@@ -59,7 +61,8 @@ const RoomPage = ({ params }) => {
             </ul>
           </div>
         </div>
-
+        
+        <BookingForm />
         
       </div>
         </>
