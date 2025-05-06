@@ -4,7 +4,7 @@ import { cookies } from "next/headers"
 
 async function DestroySession() {
     //retrieve the session cookies
-    const sessionCookie =  cookies().get('appwrite-session')
+    const sessionCookie = await cookies().get('appwrite-session')
 
     if (!sessionCookie) {
         return {

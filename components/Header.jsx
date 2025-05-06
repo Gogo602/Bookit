@@ -7,28 +7,31 @@ import { FaUser, FaSignInAlt, FaSignOutAlt, FaBuilding } from 'react-icons/fa'
 import DestroySession from "@/app/actions/destroySession"
 import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"
-import checkAuth from "@/app/actions/checkAuth"
-import { useState, useEffect } from "react"
+import { useAuth } from "@/context/AuthContext"
 
 
 const Header = () => {
 
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(null)
+  const { isAuthenticated, setIsAuthenticated } = useAuth(null)
 
-        useEffect(() => {
-          const fetchAuthStatus = async () => {
-            const result = await checkAuth();
-            setIsAuthenticated(result.isAuthenticated)
-          }
-          fetchAuthStatus();
-        }, [])
+
+
+      //replaced with the new global Auth
+        // useEffect(() => {
+        //   const fetchAuthStatus = async () => {
+        //     const result = await checkAuth();
+        //     setIsAuthenticated(result.isAuthenticated)
+        //   }
+        //   fetchAuthStatus();
+        // }, [])
         
 
   const handleLogout = async () => {
     const { success, error } = await DestroySession();
 
     if (success) {
+      setIsAuthenticated(false);
        toast.success('logged out successfully!');
       router.push('/login');
       return {
