@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
+import checkAuth from "./app/actions/checkAuth";
 
 
 export async function middleware(request) {
     
-    const isAunthenticated = false;
+    const {isAunthenticated} = await checkAuth();
     if (!isAunthenticated) {
         return NextResponse.redirect(new URL('/login', request.url));
         }

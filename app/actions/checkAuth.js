@@ -4,7 +4,7 @@ import { createAdminClient, createSessionClient } from "@/config/appwrite"
 import { cookies } from "next/headers"
 
 async function checkAuth() {
-    const sessionCookie = await cookies().get('appwrite-session');
+    const sessionCookie =  cookies().get('appwrite-session');
 
     if (!sessionCookie) {
         return {
