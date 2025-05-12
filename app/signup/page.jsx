@@ -1,11 +1,33 @@
+"use client"
 import Link from "next/link";
+import { useEffect } from "react";
+import { useFormState } from "react-dom";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import createUser from "../actions/createUser";
+
 
 const SignupPage = () => {
+
+  const [state, formAction] = useFormState(createUser, {});
+
+  const router = useRouter();
+
+  useEffect(() => {
+      if(state.error) toast.error(state.error)
+    if (state.success) {
+      toast.success("You can now login")
+      router.push('/login')
+      }
+    
+  }, [state])
+  
+
     return ( 
         <>
         <div className="flex items-center justify-center">
         <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-sm mt-20">
-          <form>
+          <form action={formAction}>
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
               Register
             </h2>
@@ -24,7 +46,7 @@ const SignupPage = () => {
             </div>
 
             <div className="mb-4">
-              <label for="email" className="block text-gray-700 font-bold mb-2"
+              <label htmlFor="email" className="block text-gray-700 font-bold mb-2"
                 >Email</label
               >
               <input
@@ -37,7 +59,7 @@ const SignupPage = () => {
             </div>
 
             <div className="mb-4">
-              <label for="password" className="block text-gray-700 font-bold mb-2"
+              <label htmlFor="password" className="block text-gray-700 font-bold mb-2"
                 >Password</label
               >
               <input
@@ -51,14 +73,14 @@ const SignupPage = () => {
 
             <div className="mb-6">
               <label
-                for="confirm-password"
+                htmlFor="confirmPassword"
                 className="block text-gray-700 font-bold mb-2"
                 >Confirm Password</label
               >
               <input
                 type="password"
-                id="confirm-password"
-                name="confirm-password"
+                id="confirmPassword"
+                name="confirmPassword"
                 className="border rounded w-full py-2 px-3"
                 required
               />
