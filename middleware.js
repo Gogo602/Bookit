@@ -4,8 +4,8 @@ import checkAuth from "./app/actions/checkAuth";
 
 export async function middleware(request) {
     
-    const {isAunthenticated} = await checkAuth();
-    if (!isAunthenticated) {
+    const {isAuthenticated} = await checkAuth();
+    if (!isAuthenticated) {
         return NextResponse.redirect(new URL('/login', request.url));
         }
 
@@ -13,5 +13,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ['/bookings']
+    matcher: ['/bookings', '/rooms/add', '/room/my']
 }
