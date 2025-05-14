@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthWrapper from "@/components/AuthWrapper";
+import checkAuth from "./actions/checkAuth";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,7 +14,8 @@ export const metadata = {
   description: "A Room Booking Web App",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const authStatus = await checkAuth()
   return (
     <AuthWrapper>
         <html lang="en">
