@@ -158,8 +158,8 @@ const AddRoomPage = () => {
                     {/* <!-- Image Upload --> */}
                     <div className="mb-8">
                         <label htmlFor="image" className="block text-gray-700 font-bold mb-2"
-                        >Image</label
-                        >
+                        >Image
+                        </label>
 
                         <input
                         type="file"
