@@ -1,4 +1,3 @@
-import Heading from "@/components/Heading";
 import getMyBookings from "../actions/getMyBookings";
 import BookedRoomCard from "@/components/BookedRoomCard";
 
