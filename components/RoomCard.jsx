@@ -34,7 +34,7 @@ const RoomCard = ({room}) => {
                 </p>
                 <p className="text-sm text-gray-600">
                 <span className="font-semibold text-gray-800"> Price: </span>
-                    ${room.price_per_hour}/hr
+                    ₦ {room.price_per_hour}/hr
                 </p>
             </div>
             </div>
